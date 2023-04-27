@@ -14,6 +14,7 @@ public class PlayerTrigger : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         triggerAction["Energy"] = EnergyGet;
         triggerAction["Enemy"] = EnemyKill;
+        triggerAction["Trap"] = TrapKill;
         stats = GetComponent<PlayerStats>();
     }
 
@@ -34,5 +35,10 @@ public class PlayerTrigger : MonoBehaviour
     private void EnemyKill(Collider2D other)
     {
         rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+    }
+
+    private void TrapKill(Collider2D other)
+    {
+        Destroy(gameObject);
     }
 }
