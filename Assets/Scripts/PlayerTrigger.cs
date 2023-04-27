@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
+    [SerializeField] private PlayerDeath _death;
+
     private Dictionary<string, Action<Collider2D>> triggerAction = new Dictionary<string, Action<Collider2D>>();
     private PlayerStats stats;
     private Rigidbody2D rb;
@@ -39,6 +41,6 @@ public class PlayerTrigger : MonoBehaviour
 
     private void TrapKill(Collider2D other)
     {
-        Destroy(gameObject);
+        _death.Death();
     }
 }

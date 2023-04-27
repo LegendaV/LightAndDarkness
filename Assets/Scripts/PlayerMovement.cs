@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     
     private bool _onGround;
     private bool _isDashed = false;
+    private bool _canUseDash = true;
     private Vector2 _dashDirection;
 
     private InputData _input;
@@ -25,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _onGround = Physics2D.OverlapCircle(_groundCheck.position, _groundRadius, _groundLayer);
+        if (_onGround)
+        {
+            _canUseDash = true;
+        }
     }
 
     private void Update()
@@ -60,13 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if ((!_input.IsDash || _input.Direction == Vector2.zero) && !_isDashed)
+        if ((!_input.IsDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
             return;
 
         if (!_isDashed)
         {
             _dashDirection = _input.Direction;
             StartCoroutine(ProcessDash());
+            _canUseDash = false;
         }
 
         Vector2 movement = _dashDirection.normalized * _playerStats.DashForce;
