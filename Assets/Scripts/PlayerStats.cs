@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
     [SerializeField] private float _dashForce;
+    [SerializeField] private Vector2 _checkpoint;
 
     public int Energy
     {
@@ -33,5 +34,11 @@ public class PlayerStats : MonoBehaviour
     public float DashForce
     {
         get { return _dashForce; }
+    }
+
+    public Vector2 Checkpoint
+    {
+        get { return _checkpoint; }
+        set { _checkpoint = value; }
     }
 }
