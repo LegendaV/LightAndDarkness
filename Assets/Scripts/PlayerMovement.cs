@@ -1,70 +1,51 @@
-using System;
-using System.Collections;
 using UnityEngine;
-
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpForce = 5f;
+    private bool isGrounded;
 
-    [SerializeField] private float _jumpForce;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _dashForce;
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private Transform _groundCheck;
-    private float _groundRadius = 0.2f;
-    [SerializeField] private LayerMask _groundLayer;
-
-    private Vector2 _direction;
-    private bool _jump;
-    private bool _dash;
-
-    private bool _onGround = true;
-    private bool _isDash = false;
-    private Vector2 _dashDirection = new Vector2(0, 0);
-
-    public void SetDirection(InputData input)
+    private void Start()
     {
-        _direction = input.Direction;
-        _jump = input.Jump;
-        _dash = input.Dash;
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
-        _onGround = Physics2D.OverlapCircle(_groundCheck.position, _groundRadius, _groundLayer);
-    }
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        Vector2 movement = new Vector2(moveHorizontal * speed, rb.velocity.y);
+        rb.velocity = movement;
 
-    private void Update()
-    {
-        if (!_isDash)
+        if (moveHorizontal < 0)
         {
-            _rb.velocity = new Vector2(_speed * _direction.x, _rb.velocity.y);
+            spriteRenderer.flipX = true;
+        }
+        else if (moveHorizontal > 0)
+        {
+            spriteRenderer.flipX = false;
         }
 
-        if (_onGround && _jump)
+        if (Input.GetButton("Jump") && isGrounded)
         {
-            _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
-        } 
-        
-        if (_isDash)
-        {
-            _rb.velocity = _dashForce * _dashDirection;
-        }
-
-        if (!_onGround && !_isDash && _dash)
-        {
-            _rb.velocity = _dashForce * _direction.normalized;
-            _dashDirection = _direction.normalized;
-            StartCoroutine(Dash());
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            isGrounded = false;
         }
     }
 
-    private IEnumerator Dash()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isDash = true;
-        yield return new WaitForSeconds(0.15f);
-        _isDash = false;
-        _dashDirection = new Vector2(0, 0);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<CapsuleCollider2D>());
+        }
     }
 }
