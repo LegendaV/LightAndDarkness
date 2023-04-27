@@ -6,25 +6,18 @@ using UnityEngine;
 
 public class StaticEnemyController : MonoBehaviour
 {
-    //private Rigidbody2D rigidbody;
     private CircleCollider2D circleCollider;
     private Vector2 startPos;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float killDistance = 10;
-    [SerializeField]
-    private GameObject player;
+    [SerializeField] private float speed;
+    [SerializeField] private float killDistance = 10;
+    [SerializeField] private GameObject player;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //rigidbody = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         startPos = circleCollider.offset;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!player.IsDestroyed())

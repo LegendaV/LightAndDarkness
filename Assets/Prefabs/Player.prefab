@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4352852580699153138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5555177659548836726}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5555177659548836726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4352852580699153138}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5454680001937178625}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7390959654628644869
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,12 +43,13 @@ GameObject:
   - component: {fileID: 4834968925107006128}
   - component: {fileID: 5837899544766887461}
   - component: {fileID: 9010078009301755573}
+  - component: {fileID: 8919553428269271315}
   - component: {fileID: 6354188904877270434}
   - component: {fileID: 6788974095245437053}
   - component: {fileID: 1780533535737372776}
   - component: {fileID: 2636658186369220977}
   m_Layer: 0
-  m_Name: WhitePlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +66,8 @@ Transform:
   m_LocalPosition: {x: -2.14, y: 2.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5555177659548836726}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,7 +139,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bc8ab85fc075b5f43ba4fbe7e6eb9659, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -120,13 +153,26 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7390959654628644869}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bc8ab85fc075b5f43ba4fbe7e6eb9659, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0063545704, y: -0.0024662018}
   m_Size: {x: 0.9239402, y: 1.1100612}
   m_Direction: 0
+--- !u!114 &8919553428269271315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390959654628644869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ab393d09458df41ba2f9a2f85be5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: 6354188904877270434}
 --- !u!114 &6354188904877270434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +185,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5e5cb233d029c44abfbdbd57848208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 8
+  _groundCheck: {fileID: 5555177659548836726}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _rb: {fileID: 5837899544766887461}
+  _spriteRenderer: {fileID: 4834968925107006128}
+  _playerStats: {fileID: 2636658186369220977}
 --- !u!114 &6788974095245437053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a0a117c8072e419ada245e1e9b631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 3458787487038731916, guid: 0db5144de427b7c4bba1e8ee61fa1cff, type: 3}
+  _bullet: {fileID: 0}
+  _stats: {fileID: 2636658186369220977}
   rechargeTime: 1
 --- !u!114 &1780533535737372776
 MonoBehaviour:
@@ -179,4 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27df007e3fba0ab45b11cf03f106e046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Energy: 0
+  _energy: 0
+  _jumpForce: 5
+  _speed: 8
+  _dashForce: 5
