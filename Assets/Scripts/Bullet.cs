@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Bullet : MonoBehaviour
 {
-    Rigidbody2D rb;
-    [SerializeField]
-    private float speed = 5f;
-    public Vector2 direction;
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] Rigidbody2D _rb;
+    private Vector2 _direction;   
+    
+    public void SetDirection(Vector2 direction)
     {
-        rb = GetComponent<Rigidbody2D>();
+        _direction = direction;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        transform.Rotate(0, 0, Time.deltaTime * speed * 10);
+        transform.Rotate(0, 0, Time.deltaTime * _speed * 10);
         var position = new Vector2(transform.position.x, transform.position.y);
-        rb.MovePosition(position + direction * speed * Time.deltaTime);
+        _rb.MovePosition(position + _direction * _speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

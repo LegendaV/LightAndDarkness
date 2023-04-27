@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class FireflyBehavior : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
-    [SerializeField]
-    private float deltaPosition;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float deltaPosition;
 
     private Vector2 startPosition;
     private float position;
