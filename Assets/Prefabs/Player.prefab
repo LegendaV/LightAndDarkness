@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4352852580699153138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,11 +43,14 @@ GameObject:
   - component: {fileID: 4834968925107006128}
   - component: {fileID: 5837899544766887461}
   - component: {fileID: 9010078009301755573}
+  - component: {fileID: 3154266798244842900}
   - component: {fileID: 8919553428269271315}
   - component: {fileID: 6354188904877270434}
   - component: {fileID: 6788974095245437053}
   - component: {fileID: 1780533535737372776}
   - component: {fileID: 2636658186369220977}
+  - component: {fileID: 8914583574208089449}
+  - component: {fileID: 1090257592317538227}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -160,6 +163,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0063545704, y: -0.0024662018}
   m_Size: {x: 0.9239402, y: 1.1100612}
   m_Direction: 0
+--- !u!70 &3154266798244842900
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390959654628644869}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: bc8ab85fc075b5f43ba4fbe7e6eb9659, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0063545704, y: -0.0024662018}
+  m_Size: {x: 0.9239402, y: 1.1100612}
+  m_Direction: 0
 --- !u!114 &8919553428269271315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a0a117c8072e419ada245e1e9b631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 3458787487038731916, guid: 0db5144de427b7c4bba1e8ee61fa1cff, type: 3}
   _stats: {fileID: 2636658186369220977}
   rechargeTime: 1
 --- !u!114 &1780533535737372776
@@ -232,6 +251,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _energy: 0
-  _jumpForce: 5
-  _speed: 8
-  _dashForce: 5
+  _jumpForce: 15
+  _speed: 10
+  _dashForce: 12
+  _checkpoint: {x: 0, y: 0}
+--- !u!114 &8914583574208089449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390959654628644869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77e7d5855ba2747a07e6a8bb7573a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats: {fileID: 2636658186369220977}
+--- !u!114 &1090257592317538227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390959654628644869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247fab82c14818c46b54be422222e0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats: {fileID: 2636658186369220977}

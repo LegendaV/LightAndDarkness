@@ -8,6 +8,7 @@ TagManager:
   - Energy
   - Enemy
   - Ground
+  - Crystal
   layers:
   - Default
   - TransparentFX
