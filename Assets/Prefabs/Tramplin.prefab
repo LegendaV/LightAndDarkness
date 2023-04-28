@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3979025968650290328}
   - component: {fileID: 3979025968650290343}
   - component: {fileID: 3979025968650290331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tramplin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
