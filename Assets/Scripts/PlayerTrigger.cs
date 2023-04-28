@@ -8,6 +8,7 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private PlayerDeath _death;
 
     private Dictionary<string, Action<Collider2D>> triggerAction = new Dictionary<string, Action<Collider2D>>();
+    private Dictionary<string, Action<Collision2D>> collisionAction = new Dictionary<string, Action<Collision2D>>();
     private PlayerStats stats;
     private Rigidbody2D rb;
 
@@ -18,6 +19,7 @@ public class PlayerTrigger : MonoBehaviour
         triggerAction["Enemy"] = EnemyKill;
         triggerAction["Trap"] = TrapKill;
         stats = GetComponent<PlayerStats>();
+        collisionAction["Enemy"] = EnemyDeath;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +28,19 @@ public class PlayerTrigger : MonoBehaviour
         {
             triggerAction[other.tag](other);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collisionAction.ContainsKey(collision.gameObject.tag))
+        {
+            collisionAction[collision.gameObject.tag](collision);
+        }
+    }
+
+    private void EnemyDeath(Collision2D other)
+    {
+        _death.Death();
     }
 
     private void EnergyGet(Collider2D other)

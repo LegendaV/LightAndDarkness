@@ -8,7 +8,7 @@ public class PlayerFading : MonoBehaviour
  
     private void Update()
     {
-        _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 1f, Time.deltaTime / 15f);
+        _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 0.75f, Time.deltaTime / 12.5f);
         _light.pointLightOuterRadius = _playerStats.LightPower;
     }
 }

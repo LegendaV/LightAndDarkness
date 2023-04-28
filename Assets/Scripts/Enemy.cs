@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            var death = gameObject.GetComponent<PlayerDeath>();
+            death.Death();
         }
         if (collision.gameObject.tag == "Bullet")
         {

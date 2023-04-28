@@ -154,7 +154,6 @@ GameObject:
   - component: {fileID: 4834968925107006128}
   - component: {fileID: 5837899544766887461}
   - component: {fileID: 9010078009301755573}
-  - component: {fileID: 3154266798244842900}
   - component: {fileID: 8919553428269271315}
   - component: {fileID: 6354188904877270434}
   - component: {fileID: 6788974095245437053}
@@ -271,22 +270,6 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: bc8ab85fc075b5f43ba4fbe7e6eb9659, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0063545704, y: -0.0024662018}
-  m_Size: {x: 0.9239402, y: 1.1100612}
-  m_Direction: 0
---- !u!70 &3154266798244842900
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390959654628644869}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: bc8ab85fc075b5f43ba4fbe7e6eb9659, type: 2}
-  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0063545704, y: -0.0024662018}
