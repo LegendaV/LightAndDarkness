@@ -99,7 +99,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.5
+  m_PointLightInnerRadius: 0.1
   m_PointLightOuterRadius: 3
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 2636658186369220977}
   _light: {fileID: 7260125400236521952}
+  _playerDeath: {fileID: 1090257592317538227}
 --- !u!114 &8914583574208089449
 MonoBehaviour:
   m_ObjectHideFlags: 0

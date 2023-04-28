@@ -8,5 +8,6 @@ public class PlayerDeath : MonoBehaviour
     public void Death()
     {
         transform.position = _playerStats.Checkpoint;
+        _playerStats.LightPower = 1.5f;
     }
 }
