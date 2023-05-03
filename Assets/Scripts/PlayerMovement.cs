@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private InputData _input;
 
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerStats _playerStats;
 
     public void PutInput(InputData input)
@@ -55,11 +55,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveX < 0)
         {
-            _spriteRenderer.flipX = true;
+            _playerTransform.localScale = new Vector3(-1, 1, 1);
         }
         else if (moveX > 0)
         {
-            _spriteRenderer.flipX = false;
+            _playerTransform.localScale = new Vector3(1, 1, 1);
         }
     }
 

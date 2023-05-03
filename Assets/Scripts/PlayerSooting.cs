@@ -7,7 +7,7 @@ public class PlayerSooting : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     
     [SerializeField] private PlayerStats _stats;
-    private SpriteRenderer spriteRenderer;
+    private Transform _playerTransform;
 
     [SerializeField] private float rechargeTime;
 
@@ -16,7 +16,7 @@ public class PlayerSooting : MonoBehaviour
     private void Start()
     {
         _stats = GetComponent<PlayerStats>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _playerTransform = GetComponent<Transform>();
         canShoot = true;
     }
 
@@ -26,10 +26,7 @@ public class PlayerSooting : MonoBehaviour
         {
             _stats.Energy -= 1;
             Vector2 direction;
-            if (spriteRenderer.flipX)
-                direction = new Vector2(-1, 0);
-            else
-                direction = new Vector2(1, 0);
+            direction = new Vector2(_playerTransform.localScale.x, 0);
             var bullet = Instantiate(_bullet, transform.position + new Vector3(direction.x, direction.y), transform.rotation);
             var script = bullet.GetComponent<Bullet>();
             script.SetDirection(direction);
