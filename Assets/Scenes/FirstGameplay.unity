@@ -47011,6 +47011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackEnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8950313920230968212, guid: ebac4c7284c627946947a34127206165, type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 8950313920230968214, guid: ebac4c7284c627946947a34127206165, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -50960,6 +50964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticEnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3117744569191807335, guid: 30d8cac21c36db942bff822125cd8d66, type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d8cac21c36db942bff822125cd8d66, type: 3}
 --- !u!1001 &8950313919541458933
@@ -50972,6 +50980,10 @@ PrefabInstance:
     - target: {fileID: 8950313920230968212, guid: ebac4c7284c627946947a34127206165, type: 3}
       propertyPath: m_Name
       value: BlackEnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950313920230968212, guid: ebac4c7284c627946947a34127206165, type: 3}
+      propertyPath: m_TagString
+      value: Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 8950313920230968214, guid: ebac4c7284c627946947a34127206165, type: 3}
       propertyPath: m_RootOrder
