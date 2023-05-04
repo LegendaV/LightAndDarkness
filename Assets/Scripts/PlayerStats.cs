@@ -48,4 +48,15 @@ public class PlayerStats : MonoBehaviour
         get { return _lightPower; }
         set { _lightPower = value; }
     }
+
+    public void LoadPlayer(GameData save)
+    {
+        transform.position = new Vector3(save.Position[0], save.Position[1], save.Position[2]);
+        _energy = save.Energy;
+        _jumpForce = save.JumpForce;
+        _speed = save.Speed;
+        _dashForce = save.DashForce;
+        _checkpoint = new Vector2(save.Checkpoint[0], save.Checkpoint[1]);
+        _lightPower = save.LightPower;
+    }
 }
