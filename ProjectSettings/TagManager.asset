@@ -10,9 +10,9 @@ TagManager:
   - Ground
   - Crystal
   - Trap
-  - Spawner
   - Frame
   - EnemySpawner
+  - EnergySpawner
   layers:
   - Default
   - TransparentFX
