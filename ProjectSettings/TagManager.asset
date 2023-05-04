@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Ground
   - Crystal
+  - Trap
+  - Spawner
   layers:
   - Default
   - TransparentFX

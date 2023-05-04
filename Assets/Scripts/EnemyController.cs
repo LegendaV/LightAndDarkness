@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     private int currentDirection = 1;
     public float Speed = 5;
     [SerializeField]
-    private float distanceX = 1;
+    private float _distanceX = 1;
     private Vector2 startPos;
 
     void Start()
@@ -18,8 +18,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.x <= startPos.x - distanceX && currentDirection == -1)
-            || (transform.position.x >= startPos.x + distanceX && currentDirection == 1)
+        if ((transform.position.x <= startPos.x - _distanceX && currentDirection == -1)
+            || (transform.position.x >= startPos.x + _distanceX && currentDirection == 1)
             || _rb.velocity.x == 0)
         {
             ChangeDirection();
@@ -31,5 +31,11 @@ public class EnemyController : MonoBehaviour
     private void ChangeDirection()
     {
         currentDirection *= -1;
+    }
+
+    public void SetStats(float speed, float distanceX)
+    {
+        Speed = speed;
+        _distanceX = distanceX;
     }
 }

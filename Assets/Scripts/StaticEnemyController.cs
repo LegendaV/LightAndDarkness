@@ -8,8 +8,8 @@ public class StaticEnemyController : MonoBehaviour
 {
     private CircleCollider2D circleCollider;
     private Vector2 startPos;
-    [SerializeField] private float speed;
-    [SerializeField] private float killDistance = 10;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _killDistance;
     [SerializeField] private GameObject player;
 
     void Start()
@@ -23,7 +23,7 @@ public class StaticEnemyController : MonoBehaviour
         if (!player.IsDestroyed())
         {
             float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
-            if (distanceToPlayer > killDistance)
+            if (distanceToPlayer > _killDistance)
             {
                 ReturnStartPos();
             }
@@ -40,11 +40,11 @@ public class StaticEnemyController : MonoBehaviour
 
     void KillPlayer()
     {
-        var dx = speed * Time.deltaTime;
-        var dy = -speed * Time.deltaTime;
-        if (Math.Abs(dx + circleCollider.offset.x) > killDistance)
+        var dx = _speed * Time.deltaTime;
+        var dy = -_speed * Time.deltaTime;
+        if (Math.Abs(dx + circleCollider.offset.x) > _killDistance)
         {
-            dx = killDistance - circleCollider.offset.x;
+            dx = _killDistance - circleCollider.offset.x;
         }
         if (player.transform.position.x < transform.position.x)
         {
@@ -61,8 +61,8 @@ public class StaticEnemyController : MonoBehaviour
     {
         if (circleCollider.offset != startPos)
         {
-            var dx = speed * Time.deltaTime;
-            var dy = speed * Time.deltaTime;
+            var dx = _speed * Time.deltaTime;
+            var dy = _speed * Time.deltaTime;
             if (Math.Abs(dx + circleCollider.offset.x) > startPos.x)
             {
                 dx = startPos.x - circleCollider.offset.x;
@@ -77,5 +77,11 @@ public class StaticEnemyController : MonoBehaviour
             }
             circleCollider.offset += new Vector2(dx, dy);
         }
+    }
+
+    public void SetStats(float speed, float killDistance)
+    {
+        _speed = speed;
+        _killDistance = killDistance;
     }
 }
