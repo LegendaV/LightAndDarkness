@@ -18,22 +18,22 @@ public class GameData
     public float[] Checkpoint;
     public float LightPower;
 
-    //Enemyes Data
-    public HashSet<(float, float, float)> aliveEnemyes;
+    //Environment Data
+    public HashSet<(float, float, float)> Environment;
 
     public GameData(string sceneName)
     {
         var allObjects = GetAllObjects(sceneName);
-        aliveEnemyes = new HashSet<(float, float, float)>();
+        Environment = new HashSet<(float, float, float)>();
 
         foreach (var gameObject in allObjects)
         {
-            if (gameObject.CompareTag("EnemySpawner"))
+            if (gameObject.CompareTag("Spawner"))
             {
-                if (gameObject.GetComponent<EnemySpawner>().IsAlive)
+                if (!gameObject.GetComponent<SpawnerScript>().IsDestroyed)
                 {
                     var pos = gameObject.transform.position;
-                    aliveEnemyes.Add((pos.x, pos.y, pos.z));
+                    Environment.Add((pos.x, pos.y, pos.z));
                 }
             }
             else if (gameObject.CompareTag("Player"))
