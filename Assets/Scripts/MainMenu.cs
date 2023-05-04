@@ -34,9 +34,14 @@ public class MainMenu : MonoBehaviour
             var frames = new List<GameObject>();
             foreach (var gameObject in all)
             {
-                if (gameObject.CompareTag("Spawner"))
+                if (gameObject.CompareTag("EnemySpawner"))
                 {
-                    gameObject.GetComponent<EnemySpawner>().SetNotAlive();
+                    var pos = gameObject.transform.position;
+                    if (!loadData.aliveEnemyes.Contains(( pos.x, pos.y, pos.z )))
+                    {
+                        var spawner = gameObject.GetComponent<EnemySpawner>();
+                        spawner.IsAlive = false;
+                    }
                 }
                 else if (gameObject.CompareTag("Frame"))
                 {

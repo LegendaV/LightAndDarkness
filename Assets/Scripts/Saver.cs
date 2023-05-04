@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Saver : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Saver : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5))
         {
             Debug.Log("SAVE, please will be correct");
-            SaveSystem.SaveGame(gameObject);
+            SaveSystem.SaveGame(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private bool isAlive = true;
+    public bool IsAlive { get; set; } = true;
     [SerializeField]
     private GameObject _enemy;
     [SerializeField]
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        if (isAlive)
+        if (IsAlive)
         {
             enemy = Instantiate(_enemy, transform.position, transform.rotation);
             enemy.transform.SetParent(gameObject.transform);
@@ -37,14 +37,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (isAlive && enemy.IsDestroyed())
+        if (IsAlive && enemy.IsDestroyed())
         {
-            SetNotAlive();
+            IsAlive = false;
         }
-    }
-
-    public void SetNotAlive()
-    {
-        isAlive = false;
     }
 }

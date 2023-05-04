@@ -12,6 +12,7 @@ TagManager:
   - Trap
   - Spawner
   - Frame
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

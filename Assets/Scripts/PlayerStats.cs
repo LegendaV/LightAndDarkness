@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
 
     public void LoadPlayer(GameData save)
     {
-        transform.position = new Vector3(save.Position[0], save.Position[1], save.Position[2]);
+        transform.position = new Vector3(save.PlayerPosition[0], save.PlayerPosition[1], save.PlayerPosition[2]);
         _energy = save.Energy;
         _jumpForce = save.JumpForce;
         _speed = save.Speed;

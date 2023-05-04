@@ -8,7 +8,7 @@ public static class SaveSystem
 {
     private static string DirectoryPath { get; }
 
-    public static void SaveGame(GameObject scene)
+    public static void SaveGame(string sceneName)
     {
         var formatter = new BinaryFormatter();
         if (!Directory.Exists(DirectoryPath))
@@ -16,7 +16,7 @@ public static class SaveSystem
             Directory.CreateDirectory(DirectoryPath);
         }
         var stream = new FileStream(DirectoryPath + "/Save.lad", FileMode.Create);
-        var data = new GameData(scene);
+        var data = new GameData(sceneName);
         formatter.Serialize(stream, data);
         stream.Close();
     }
