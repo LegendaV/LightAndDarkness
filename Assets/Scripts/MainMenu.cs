@@ -12,12 +12,53 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(_startGameScene.name);
+        var asyncOp = LoadScene(_startGameScene.name);
+        asyncOp.allowSceneActivation = true;
+        asyncOp.completed += operation =>
+        {
+            var nextScene = SceneManager.GetSceneByName(_startGameScene.name);
+            var frames = FindObjectsOfType<GameObject>().Where(g => g.CompareTag("Frame")).ToList();
+            frames.ForEach(f => f.SetActive(false));
+        };
     }
 
     public void LoadGame()
     {
-        var asyncOp = SceneManager.LoadSceneAsync(_startGameScene.name, LoadSceneMode.Single);
+        var loadData = SaveSystem.LoadGame();
+        var asyncOp = LoadScene(_startGameScene.name);
+        asyncOp.allowSceneActivation = true;
+        asyncOp.completed += operation =>
+        {
+            var nextScene = SceneManager.GetSceneByName(_startGameScene.name);
+            var all = FindObjectsOfType<GameObject>();
+            var frames = new List<GameObject>();
+            foreach (var gameObject in all)
+            {
+                if (gameObject.CompareTag("EnemySpawner"))
+                {
+                    var pos = gameObject.transform.position;
+                    if (!loadData.aliveEnemyes.Contains(( pos.x, pos.y, pos.z )))
+                    {
+                        var spawner = gameObject.GetComponent<EnemySpawner>();
+                        spawner.IsAlive = false;
+                    }
+                }
+                else if (gameObject.CompareTag("Frame"))
+                {
+                    frames.Add(gameObject);
+                }
+                else if (gameObject.CompareTag("Player"))
+                {
+                    gameObject.GetComponent<PlayerStats>().LoadPlayer(loadData);
+                }
+            }
+            frames.ForEach(g => g.SetActive(false));
+        };
+    }
+
+    private AsyncOperation LoadScene(string sceneName)
+    {
+        var asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         asyncOp.allowSceneActivation = false;
         while (!asyncOp.isDone)
         {
@@ -26,16 +67,7 @@ public class MainMenu : MonoBehaviour
                 break;
             }
         }
-        asyncOp.allowSceneActivation = true;
-        asyncOp.completed += operation =>
-        {
-            var nextScene = SceneManager.GetSceneByName(_startGameScene.name);
-            var all = FindObjectsOfType<EnemySpawner>();
-            foreach (var gameObject in all)
-            {
-                gameObject.SetNotAlive();
-            }
-        };
+        return asyncOp;
     }
 
     public void ExitGame()

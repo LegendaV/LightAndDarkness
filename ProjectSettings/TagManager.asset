@@ -11,6 +11,8 @@ TagManager:
   - Crystal
   - Trap
   - Spawner
+  - Frame
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
