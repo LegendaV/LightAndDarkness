@@ -129,4 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   killDistance: 2
-  player: {fileID: 7390959654628644869, guid: ca213bdb9d6c1d84e8722caabcf15df1, type: 3}
+  player: {fileID: 5697223183011229954, guid: ca213bdb9d6c1d84e8722caabcf15df1, type: 3}
