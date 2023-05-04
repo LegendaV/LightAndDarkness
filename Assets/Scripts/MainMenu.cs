@@ -34,13 +34,13 @@ public class MainMenu : MonoBehaviour
             var frames = new List<GameObject>();
             foreach (var gameObject in all)
             {
-                if (gameObject.CompareTag("EnemySpawner"))
+                if (gameObject.CompareTag("Spawner"))
                 {
                     var pos = gameObject.transform.position;
-                    if (!loadData.aliveEnemyes.Contains(( pos.x, pos.y, pos.z )))
+                    if (!loadData.Environment.Contains(( pos.x, pos.y, pos.z )))
                     {
-                        var spawner = gameObject.GetComponent<EnemySpawner>();
-                        spawner.IsAlive = false;
+                        var spawner = gameObject.GetComponent<SpawnerScript>();
+                        spawner.IsDestroyed = true;
                     }
                 }
                 else if (gameObject.CompareTag("Frame"))
