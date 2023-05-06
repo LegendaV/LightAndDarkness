@@ -81,10 +81,12 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator ProcessDash()
     {
+        _rb.gravityScale = 0;
         _isDashed = true;
         yield return new WaitForSeconds(0.2f);
         _isDashed = false;
         _dashDirection = Vector2.zero;
+        _rb.gravityScale = 1;
     }
 
     private void Jump()
