@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerSaveCheckpoint : MonoBehaviour
 {
@@ -10,6 +10,10 @@ public class PlayerSaveCheckpoint : MonoBehaviour
         var gameObject = collision.gameObject;
         if (gameObject.tag == "Crystal")
         {
+            if (_playerStats.Checkpoint != (Vector2)gameObject.transform.position)
+            {
+                SaveSystem.SaveGame(SceneManager.GetActiveScene().name);
+            }
             _playerStats.Checkpoint = gameObject.transform.position;
             _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 3f, Time.deltaTime);
         }
