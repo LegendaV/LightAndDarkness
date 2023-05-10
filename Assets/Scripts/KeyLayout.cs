@@ -9,13 +9,15 @@ public static class KeyLayout
         { "Jump", KeyCode.C },
         { "Dash", KeyCode.X },
         { "Shoot", KeyCode.Z },
-        { "PauseMenu", KeyCode.Escape }
+        { "PauseMenu", KeyCode.Escape },
+        { "Dialog", KeyCode.V }
     };
 
     public static KeyCode Jump { get => keysLayout["Jump"]; set => keysLayout["Jump"] = value; }
     public static KeyCode Dash { get => keysLayout["Dash"]; set => keysLayout["Dash"] = value; }
     public static KeyCode Shoot { get => keysLayout["Shoot"]; set => keysLayout["Shoot"] = value; }
     public static KeyCode PauseMenu { get => keysLayout["PauseMenu"]; set => keysLayout["PauseMenu"] = value; }
+    public static KeyCode Dialog { get => keysLayout["Dialog"]; set => keysLayout["Dialog"] = value; }
 
     public static KeyCode GetKey(string name)
     {

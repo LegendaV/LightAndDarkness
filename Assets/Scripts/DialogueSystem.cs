@@ -16,7 +16,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (_dialogueLines != null)
         {
-            if (Input.GetKeyDown(KeyCode.V))
+            if (Input.GetKeyDown(KeyLayout.Dialog))
             {
                 if (_text.text == _dialogueLines[_currentLineIndex])
                 {

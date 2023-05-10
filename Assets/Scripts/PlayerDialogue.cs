@@ -23,7 +23,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (_dialogueLines is not null)
         {
-            if (Input.GetKeyDown(KeyCode.V))
+            if (Input.GetKeyDown(KeyLayout.Dialog))
             {
                 _dialogueSystem.SetDialogueLines(_dialogueLines);
             }
