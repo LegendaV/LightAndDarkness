@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private SceneAsset _startGameScene;
+    [SerializeField]
+    private GameObject _setMenu;
 
     public void StartGame()
     {
@@ -16,6 +18,12 @@ public class MainMenu : MonoBehaviour
     public void LoadGame()
     {
         LoadSystem.LoadSceneFromSave(_startGameScene, SaveSystem.LoadGame());
+    }
+
+    public void OpenSetMenu()
+    {
+        gameObject.SetActive(false);
+        _setMenu.SetActive(true);
     }
 
     public void ExitGame()

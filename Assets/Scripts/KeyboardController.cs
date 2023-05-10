@@ -15,7 +15,7 @@ public class KeyboardController : MonoBehaviour
             Debug.Log("SAVE, please will be correct");
             SaveSystem.SaveGame(SceneManager.GetActiveScene().name);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyLayout.PauseMenu))
         {
             _escMenu.ChangeStatus();
         }
