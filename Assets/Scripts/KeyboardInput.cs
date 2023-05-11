@@ -24,8 +24,8 @@ public class KeyboardInput : MonoBehaviour
     {
         var directionX = Input.GetAxis("Horizontal");
         var directionY = Input.GetAxis("Vertical");
-        var isJump = Input.GetKeyDown(KeyCode.C);
-        var isDash = Input.GetKeyDown(KeyCode.X);
+        var isJump = Input.GetKeyDown(KeyLayout.Jump);
+        var isDash = Input.GetKeyDown(KeyLayout.Dash);
 
         var inputData = new InputData(new Vector2(directionX, directionY), isJump, isDash);
 
