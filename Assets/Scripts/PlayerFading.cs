@@ -9,9 +9,12 @@ public class PlayerFading : MonoBehaviour
  
     private void Update()
     {
-        _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 0.1f, Time.deltaTime / 12.5f);
-        _light.pointLightOuterRadius = _playerStats.LightPower;
-        if (_playerStats.LightPower < 0.6f)
-            _playerDeath.Death();
+        if (!_playerStats.InDialogue)
+        {
+            _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 0.1f, Time.deltaTime / 12.5f);
+            _light.pointLightOuterRadius = _playerStats.LightPower;
+            if (_playerStats.LightPower < 0.6f)
+                _playerDeath.Death();
+        }
     }
 }

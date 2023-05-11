@@ -34,17 +34,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isDashed)
+        if (!_playerStats.InDialogue)
         {
-            Dash();
-            return;
-        }
+            if (_isDashed)
+            {
+                Dash();
+                return;
+            }
 
-        Move();
-        if (_onGround)
-            Jump();
-        else
-            Dash();
+            Move();
+            if (_onGround)
+                Jump();
+            else
+                Dash();
+        }
     }
 
     private void Move()

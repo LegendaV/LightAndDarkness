@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float _dashForce;
     [SerializeField] private Vector2 _checkpoint;
     [SerializeField] private float _lightPower;
+    [SerializeField] private bool _inDialogue;
 
     public int Energy
     {
@@ -49,6 +50,12 @@ public class PlayerStats : MonoBehaviour
         set { _lightPower = value; }
     }
 
+    public bool InDialogue
+    {
+        get => _inDialogue;
+        set => _inDialogue = value;
+    }
+    
     public void LoadPlayer(GameData save)
     {
         transform.position = new Vector3(save.PlayerPosition[0], save.PlayerPosition[1], save.PlayerPosition[2]);
