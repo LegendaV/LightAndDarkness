@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce28ff2fa22ed64d9e885f86195aa84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startGameScene: {fileID: 102900000, guid: 1f764b2b5a1b7d9439b79c01b4058a95, type: 3}
+  _startGameScene: {fileID: 102900000, guid: d6e082daf6bff6a43817a7cbc5a531f0, type: 3}
   _setMenu: {fileID: 863642779}
 --- !u!1 &341612266
 GameObject:
