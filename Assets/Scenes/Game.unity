@@ -52499,6 +52499,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1722476153142274592, guid: 5d1afb17e9a76d745b3ffba7589ca198, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 1374194034}
     - target: {fileID: 1722476153209094122, guid: 5d1afb17e9a76d745b3ffba7589ca198, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -17.200012
