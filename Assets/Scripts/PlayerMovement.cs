@@ -48,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
             else
                 Dash();
         }
+        else
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
     }
 
     private void Move()
