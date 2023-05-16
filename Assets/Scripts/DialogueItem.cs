@@ -13,6 +13,7 @@ public class DialogueItem : MonoBehaviour
     private void Start()
     {
         _button = Instantiate(_buttonPrefab, transform.position + new Vector3(0, 1, 0), transform.rotation);
+        _button.transform.SetParent(gameObject.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
