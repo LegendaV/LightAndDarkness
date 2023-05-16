@@ -6,18 +6,18 @@ public static class KeyLayout
 {
     private static readonly Dictionary<string, KeyCode> keysLayout = new Dictionary<string, KeyCode>
     {
-        { "Jump", KeyCode.C },
-        { "Dash", KeyCode.X },
-        { "Shoot", KeyCode.Z },
-        { "PauseMenu", KeyCode.Escape },
-        { "Dialog", KeyCode.V }
+        { "Прыжок", KeyCode.C },
+        { "Рывок", KeyCode.X },
+        { "Стрельба", KeyCode.Z },
+        { "Пауза", KeyCode.Escape },
+        { "Взаимодействовать", KeyCode.V }
     };
 
-    public static KeyCode Jump { get => keysLayout["Jump"]; set => keysLayout["Jump"] = value; }
-    public static KeyCode Dash { get => keysLayout["Dash"]; set => keysLayout["Dash"] = value; }
-    public static KeyCode Shoot { get => keysLayout["Shoot"]; set => keysLayout["Shoot"] = value; }
-    public static KeyCode PauseMenu { get => keysLayout["PauseMenu"]; set => keysLayout["PauseMenu"] = value; }
-    public static KeyCode Dialog { get => keysLayout["Dialog"]; set => keysLayout["Dialog"] = value; }
+    public static KeyCode Jump { get => keysLayout["Прыжок"]; set => keysLayout["Прыжок"] = value; }
+    public static KeyCode Dash { get => keysLayout["Рывок"]; set => keysLayout["Рывок"] = value; }
+    public static KeyCode Shoot { get => keysLayout["Стрельба"]; set => keysLayout["Стрельба"] = value; }
+    public static KeyCode PauseMenu { get => keysLayout["Пауза"]; set => keysLayout["Пауза"] = value; }
+    public static KeyCode Dialog { get => keysLayout["Взаимодействовать"]; set => keysLayout["Взаимодействовать"] = value; }
 
     public static KeyCode GetKey(string name)
     {
