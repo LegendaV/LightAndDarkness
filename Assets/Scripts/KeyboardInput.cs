@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public struct InputData
 {
     public Vector2 Direction;

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_playerStats.InDialogue)
         {
-            if (_isDashed)
+            if (_isDashed && _playerStats.HasDash)
             {
                 Dash();
                 return;
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if ((!_input.IsDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
+        if ((!_input.IsDash || !_playerStats.HasDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
             return;
 
         if (!_isDashed)

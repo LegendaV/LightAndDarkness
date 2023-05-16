@@ -7773,6 +7773,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 901796180}
     - target: {fileID: 5697223182194454416, guid: ca213bdb9d6c1d84e8722caabcf15df1, type: 3}
+      propertyPath: _hasDash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697223182194454416, guid: ca213bdb9d6c1d84e8722caabcf15df1, type: 3}
       propertyPath: _jumpForce
       value: 10
       objectReference: {fileID: 0}
