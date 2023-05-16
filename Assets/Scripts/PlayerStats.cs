@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float _lightPower;
     [SerializeField] private bool _inDialogue;
     [SerializeField] private bool _hasDash;
+    [SerializeField] private int _skyeyFireflyProgress;
 
     public int Energy
     {
@@ -63,6 +64,12 @@ public class PlayerStats : MonoBehaviour
         set => _hasDash = value;
     }
 
+    public int SkyeyFireflyProgress
+    {
+        get => _skyeyFireflyProgress;
+        set => _skyeyFireflyProgress = value;
+    }
+
     public void LoadPlayer(GameData save)
     {
         transform.position = new Vector3(save.PlayerPosition[0], save.PlayerPosition[1], save.PlayerPosition[2]);
@@ -73,5 +80,6 @@ public class PlayerStats : MonoBehaviour
         _checkpoint = new Vector2(save.Checkpoint[0], save.Checkpoint[1]);
         _lightPower = save.LightPower;
         _hasDash = save.HasDash;
+        _skyeyFireflyProgress = save.SkyeyFireflyProgress;
     }
 }
