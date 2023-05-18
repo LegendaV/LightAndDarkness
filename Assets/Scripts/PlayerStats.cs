@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private bool _inDialogue;
     [SerializeField] private bool _hasDash;
     [SerializeField] private int _skyeyFireflyProgress;
+    [SerializeField] private bool _nearCrystal;
 
     public int Energy
     {
@@ -81,5 +82,11 @@ public class PlayerStats : MonoBehaviour
         _lightPower = save.LightPower;
         _hasDash = save.HasDash;
         _skyeyFireflyProgress = save.SkyeyFireflyProgress;
+    }
+
+    public bool NearCrystal
+    {
+        get => _nearCrystal;
+        set => _nearCrystal = value;
     }
 }
