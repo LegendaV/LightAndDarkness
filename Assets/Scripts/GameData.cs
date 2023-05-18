@@ -17,6 +17,8 @@ public class GameData
     public float DashForce;
     public float[] Checkpoint;
     public float LightPower;
+    public bool HasDash;
+    public int SkyeyFireflyProgress;
 
     //Environment Data
     public HashSet<(float, float, float)> Environment;
@@ -57,6 +59,8 @@ public class GameData
             var checkpointVector = playerStats.Checkpoint;
             Checkpoint = new[] { checkpointVector.x, checkpointVector.y };
             LightPower = playerStats.LightPower;
+            HasDash = playerStats.HasDash;
+            SkyeyFireflyProgress = playerStats.SkyeyFireflyProgress;
         }
     }
 

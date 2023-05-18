@@ -15,6 +15,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private float _textSpeed;
     [SerializeField] private string[] _dialogueLines;
 
+    [SerializeField] private PlayerStats _playerStats;
+    
     private int _currentLineIndex;
 
     private void Update()
@@ -43,12 +45,14 @@ public class DialogueSystem : MonoBehaviour
 
         _dialogueLines = lines.ToArray();
         gameObject.SetActive(true);
+        _playerStats.InDialogue = true;
         StartDialogue();
     }
 
     private void ResetDialogueLines()
     {
         _dialogueLines = null;
+        _playerStats.InDialogue = false;
         gameObject.SetActive(false);
     }
 
@@ -79,7 +83,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            ResetDialogueLines();
         }
     }
 }

@@ -39,17 +39,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isDashed)
+        if (!_playerStats.InDialogue)
         {
-            Dash();
-            return;
-        }
+            if (_isDashed && _playerStats.HasDash)
+            {
+                Dash();
+                return;
+            }
 
-        Move();
-        if (_onGround)
-            Jump();
+            Move();
+            if (_onGround)
+                Jump();
+            else
+                Dash();
+        }
         else
-            Dash();
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
     }
 
     private void Move()
@@ -81,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if ((!_input.IsDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
+        if ((!_input.IsDash || !_playerStats.HasDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
             return;
 
         if (!_isDashed)

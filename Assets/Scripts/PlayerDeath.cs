@@ -8,16 +8,18 @@ public class PlayerDeath : MonoBehaviour
 
     public void Death()
     {
-        DisableControleCoroutine();
+        StartCoroutine(DisableControleCoroutine());
         transform.position = _playerStats.Checkpoint;
         _playerStats.LightPower = 1.5f;
     }
 
-    IEnumerable DisableControleCoroutine()
+    IEnumerator DisableControleCoroutine()
     {
-        var rb = GetComponent<Rigidbody2D>();
+        var rb = gameObject.GetComponent<Rigidbody2D>();
         rb.Sleep();
-        yield return new WaitForSeconds(5);
         rb.WakeUp();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+        yield return new WaitForSeconds(0.5f);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

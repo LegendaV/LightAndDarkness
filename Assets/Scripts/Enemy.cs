@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -10,11 +11,6 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            var death = gameObject.GetComponent<PlayerDeath>();
-            death.Death();
-        }
         if (collision.gameObject.tag == "Bullet")
         {
             var audio = Instantiate(_audio);
@@ -25,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
         {
             var audio = Instantiate(_audio);
             audio.PlayOneShot(_deathSounds[_random.Next(_deathSounds.Length)]);

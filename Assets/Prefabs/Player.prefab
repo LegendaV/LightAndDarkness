@@ -996,6 +996,8 @@ MonoBehaviour:
   _dashForce: 12
   _checkpoint: {x: 0, y: 0}
   _lightPower: 3
+  _inDialogue: 0
+  _hasDash: 0
 --- !u!114 &5697223183011229972
 MonoBehaviour:
   m_ObjectHideFlags: 0

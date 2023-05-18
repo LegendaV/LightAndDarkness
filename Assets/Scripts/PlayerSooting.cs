@@ -24,7 +24,7 @@ public class PlayerSooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyLayout.Shoot) && _stats.Energy > 0 && canShoot)
+        if (Input.GetKey(KeyLayout.Shoot) && _stats.Energy > 0 && canShoot && !_stats.InDialogue)
         {
             _stats.Energy -= 1;
             Vector2 direction;
