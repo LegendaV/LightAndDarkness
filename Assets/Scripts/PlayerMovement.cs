@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = System.Random;
@@ -22,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerStats _playerStats;
+
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void PutInput(InputData input)
     {
@@ -62,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float moveX = _input.Direction.x;
+        _animator.SetFloat("move x", Mathf.Abs(moveX));
+        _animator.SetBool("on ground", _onGround);
         if (Mathf.Abs(moveX) > 0.1f && !_playingStepSound && _onGround)
             StartCoroutine(PlayStepSound());
         
