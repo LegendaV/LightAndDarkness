@@ -8,6 +8,7 @@ public class PlayerSooting : MonoBehaviour
     
     [SerializeField] private PlayerStats _stats;
     private Transform _playerTransform;
+    private PlayerSound _playerSound;
 
     [SerializeField] private float rechargeTime;
 
@@ -18,6 +19,7 @@ public class PlayerSooting : MonoBehaviour
         _stats = GetComponent<PlayerStats>();
         _playerTransform = GetComponent<Transform>();
         canShoot = true;
+        _playerSound = GetComponent<PlayerSound>();
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class PlayerSooting : MonoBehaviour
             var bullet = Instantiate(_bullet, transform.position + new Vector3(direction.x, direction.y), transform.rotation);
             var script = bullet.GetComponent<Bullet>();
             script.SetDirection(direction);
+            _playerSound.PlayShootingSound();
             canShoot = false;
             StartCoroutine(CanShootCoroutine(rechargeTime));
         }
