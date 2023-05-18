@@ -26,7 +26,6 @@ public class SkyeyLight : MonoBehaviour
         {
             _light.intensity = Mathf.Max(_light.intensity - fadingSpeed * Time.deltaTime, 0);
             isFading = _light.intensity > 0;
-            Debug.Log(isFading);
         }
         else
         {
