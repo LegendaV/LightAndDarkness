@@ -15,16 +15,16 @@ public class PlayerSaveCheckpoint : MonoBehaviour
                 SaveSystem.SaveGame(SceneManager.GetActiveScene().name);
             }
             _playerStats.Checkpoint = gameObject.transform.position;
-            _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 3f, Time.deltaTime);
+            _playerStats.NearCrystal = true;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         var gameObject = collision.gameObject;
         if (gameObject.tag == "Crystal")
         {
-            _playerStats.LightPower = Mathf.Lerp(_playerStats.LightPower, 3f, Time.deltaTime);
+            _playerStats.NearCrystal = false;
         }
     }
 }
