@@ -1,8 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using Random = System.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerSound _playerSound;
+    private bool _playingStepSound;
+    private Random _random = new Random();
+    
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundLayer;
     private float _groundRadius = 0.2f;
@@ -50,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float moveX = _input.Direction.x;
+        if (Mathf.Abs(moveX) > 0.1f && !_playingStepSound && _onGround)
+            StartCoroutine(PlayStepSound());
+        
         Vector2 movement = new Vector2(moveX * _playerStats.Speed, _rb.velocity.y);
         _rb.velocity = movement;
 
@@ -63,6 +71,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayStepSound()
+    {
+        _playingStepSound = true;
+        _playerSound.PlayStepSound();
+        yield return new WaitForSeconds(0.25f);
+        _playingStepSound = false;
+    }
+
     private void Dash()
     {
         if ((!_input.IsDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
@@ -70,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!_isDashed)
         {
+            _playerSound.PlayDashSound();
             _dashDirection = _input.Direction;
             StartCoroutine(ProcessDash());
             _canUseDash = false;
@@ -94,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if (!_input.IsJump)
             return;
     
+        _playerSound.PlayDashSound();
         _rb.AddForce(new Vector2(0f, _playerStats.JumpForce), ForceMode2D.Impulse);
         _onGround = false;
     }

@@ -1,8 +1,13 @@
 using UnityEngine;
+using Random = System.Random;
 
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip[] _deathSounds;
+    private Random _random = new Random();
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -12,6 +17,8 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
+            var audio = Instantiate(_audio);
+            audio.PlayOneShot(_deathSounds[_random.Next(_deathSounds.Length)]);
             Destroy(gameObject);
         }
     }
@@ -20,6 +27,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            var audio = Instantiate(_audio);
+            audio.PlayOneShot(_deathSounds[_random.Next(_deathSounds.Length)]);
             Destroy(gameObject);
         }
     }

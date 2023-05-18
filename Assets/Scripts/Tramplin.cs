@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Tramplin : MonoBehaviour
 {
+    [SerializeField] private AudioSource _tramplinAudio;
+    [SerializeField] private AudioClip[] _tramplinSounds;
+    private Random _random = new Random();
+
     [SerializeField]
     float force;
     [SerializeField]
@@ -13,6 +18,7 @@ public class Tramplin : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            _tramplinAudio.PlayOneShot(_tramplinSounds[_random.Next(_tramplinSounds.Length)]);
             var player = collision.gameObject.GetComponent<Rigidbody2D>();
             float t;
             Vector3 v;

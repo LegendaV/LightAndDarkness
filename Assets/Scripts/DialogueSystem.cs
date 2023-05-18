@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using Random = System.Random;
 
 public class DialogueSystem : MonoBehaviour
 {
+    [SerializeField] private AudioSource _typingAudio;
+    [SerializeField] private AudioClip[] _typingSounds;
+    private Random _random = new Random();
+    
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private float _textSpeed;
     [SerializeField] private string[] _dialogueLines;
@@ -58,6 +63,7 @@ public class DialogueSystem : MonoBehaviour
     {
         foreach (var ch in _dialogueLines[_currentLineIndex].ToCharArray())
         {
+            _typingAudio.PlayOneShot(_typingSounds[_random.Next(_typingSounds.Length)]);
             _text.text += ch;
             yield return new WaitForSeconds(_textSpeed);
         }
