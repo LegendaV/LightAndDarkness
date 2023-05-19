@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 6048909364095594727, guid: 3d02e58bd60779448ad1b69d54317304, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -5456092166759343146, guid: e29e673408e51ab4a93feabf771cb443, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d02e58bd60779448ad1b69d54317304, type: 3}
 --- !u!4 &2943308811598493425 stripped
