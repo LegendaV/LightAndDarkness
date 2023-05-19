@@ -11,6 +11,8 @@ public class Crystal : MonoBehaviour
     private bool _playingSounds;
     private Random _random = new Random();
 
+    [SerializeField] private ParticleSystem _particleSystem;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !_playingSounds)
@@ -23,6 +25,7 @@ public class Crystal : MonoBehaviour
     {
         _playingSounds = true;
 
+        _particleSystem.Play();
         _crystalAudio.PlayOneShot(_crystalSounds[_random.Next(_crystalSounds.Length)]);
         
         yield return new WaitForSeconds(1f);
