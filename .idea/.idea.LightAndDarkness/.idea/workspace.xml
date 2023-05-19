@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3132208a-3b5b-4b20-89c0-a92135b57299" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LightAndDarkness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LightAndDarkness/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerFading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerFading.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerSaveCheckpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerSaveCheckpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Crystal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Crystal.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WhiteEnergy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WhiteEnergy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Crystal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Crystal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FireflyBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FireflyBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine/.idea/.idea.StateMachine.dir/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine/.idea/.idea.StateMachine.dir/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +101,7 @@
       <updated>1683828583257</updated>
       <workItem from="1683828587329" duration="4607000" />
       <workItem from="1684432747247" duration="2625000" />
+      <workItem from="1684470506623" duration="1382000" />
     </task>
     <servers />
   </component>

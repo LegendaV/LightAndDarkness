@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   deltaPosition: 0.2
+  _particleSystem: {fileID: 0}
 --- !u!95 &849709055661800057
 Animator:
   serializedVersion: 5
