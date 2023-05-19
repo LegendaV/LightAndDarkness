@@ -46,6 +46,7 @@ public class EscMenu : MonoBehaviour
     private void Open()
     {
         PlayClickSound();
+        Cursor.visible = true;
         timeScaleSave = Time.timeScale;
         Time.timeScale = 0;
         gameObject.SetActive(true);
@@ -54,6 +55,7 @@ public class EscMenu : MonoBehaviour
     private void Close()
     {
         PlayClickSound();
+        Cursor.visible = false;
         Time.timeScale = timeScaleSave;
         gameObject.SetActive(false);
     }

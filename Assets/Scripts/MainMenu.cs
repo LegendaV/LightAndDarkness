@@ -23,12 +23,14 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         PlayClickSound();
+        Cursor.visible = false;
         LoadSystem.LoadScene(_startGameScene);
     }
     
     public void LoadGame()
     {
         PlayClickSound();
+        Cursor.visible = false;
         LoadSystem.LoadSceneFromSave(_startGameScene, SaveSystem.LoadGame());
     }
 
