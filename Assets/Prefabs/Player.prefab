@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 498487768146461634}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5456092166759343146, guid: e29e673408e51ab4a93feabf771cb443, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -998,6 +998,8 @@ MonoBehaviour:
   _lightPower: 3
   _inDialogue: 0
   _hasDash: 0
+  _skyeyFireflyProgress: 0
+  _nearCrystal: 0
 --- !u!114 &5697223183011229972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1121,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c942953ae01280848b139428c9149e4d, type: 3}
   - {fileID: 8300000, guid: 0510da507b702c4408d1d249e4b1db43, type: 3}
   - {fileID: 8300000, guid: ff3f8f44f7d8f0e4d9325983d658ced8, type: 3}
+  _lootingSounds:
+  - {fileID: 8300000, guid: fc59c85c74e1fdd41842e76de743cb97, type: 3}
+  - {fileID: 8300000, guid: e21ef05dbca3756409c8352b8d0a203f, type: 3}
+  - {fileID: 8300000, guid: d2678c0680ac51a46905a75299b92cba, type: 3}
+  _deathSounds:
+  - {fileID: 8300000, guid: ace4bd7215c5804468d5e12749199466, type: 3}
+  - {fileID: 8300000, guid: 53836cf50b6fab649b0635600bd0c6f4, type: 3}
 --- !u!1 &5697223183179817803
 GameObject:
   m_ObjectHideFlags: 0
