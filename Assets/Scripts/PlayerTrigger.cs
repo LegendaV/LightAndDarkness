@@ -12,6 +12,8 @@ public class PlayerTrigger : MonoBehaviour
     private PlayerStats stats;
     private Rigidbody2D rb;
 
+    private PlayerSound _playerSound;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,6 +22,8 @@ public class PlayerTrigger : MonoBehaviour
         triggerAction["Trap"] = TrapKill;
         stats = GetComponent<PlayerStats>();
         collisionAction["Enemy"] = EnemyDeath;
+
+        _playerSound = GetComponent<PlayerSound>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +50,7 @@ public class PlayerTrigger : MonoBehaviour
     private void EnergyGet(Collider2D other)
     {
         stats.Energy += 1;
+        _playerSound.PlayLootingSound();
         Destroy(other.gameObject);
     }
 

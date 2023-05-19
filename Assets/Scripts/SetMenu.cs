@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class SetMenu : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class SetMenu : MonoBehaviour
 
     private Vector2 currentButtonEditPos = new Vector2(-420, 420);
 
+    [SerializeField] private AudioSource _menuAudio;
+    [SerializeField] private AudioClip[] _clickSounds;
+    private Random _random = new Random();
+    
     void Start()
     {
         foreach (var element in KeyLayout.GetAllKey())
@@ -31,7 +36,13 @@ public class SetMenu : MonoBehaviour
 
     public void Exit()
     {
+        PlayClickSound();
         gameObject.SetActive(false);
         _mainMenu.SetActive(true);
+    }
+
+    private void PlayClickSound()
+    {
+        _menuAudio.PlayOneShot(_clickSounds[_random.Next(_clickSounds.Length)]);
     }
 }

@@ -1,8 +1,14 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = System.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerSound _playerSound;
+    private bool _playingStepSound;
+    private Random _random = new Random();
+    
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundLayer;
     private float _groundRadius = 0.2f;
@@ -17,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerStats _playerStats;
+
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void PutInput(InputData input)
     {
@@ -57,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float moveX = _input.Direction.x;
+        _animator.SetFloat("move x", Mathf.Abs(moveX));
+        _animator.SetBool("on ground", _onGround);
+        if (Mathf.Abs(moveX) > 0.1f && !_playingStepSound && _onGround)
+            StartCoroutine(PlayStepSound());
+        
         Vector2 movement = new Vector2(moveX * _playerStats.Speed, _rb.velocity.y);
         _rb.velocity = movement;
 
@@ -70,6 +88,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayStepSound()
+    {
+        _playingStepSound = true;
+        _playerSound.PlayStepSound();
+        yield return new WaitForSeconds(0.25f);
+        _playingStepSound = false;
+    }
+
     private void Dash()
     {
         if ((!_input.IsDash || !_playerStats.HasDash || _input.Direction == Vector2.zero || !_canUseDash) && !_isDashed)
@@ -77,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!_isDashed)
         {
+            _playerSound.PlayDashSound();
             _dashDirection = _input.Direction;
             StartCoroutine(ProcessDash());
             _canUseDash = false;
@@ -101,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
         if (!_input.IsJump)
             return;
     
+        _playerSound.PlayDashSound();
         _rb.AddForce(new Vector2(0f, _playerStats.JumpForce), ForceMode2D.Impulse);
         _onGround = false;
     }
