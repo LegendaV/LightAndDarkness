@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerTrigger : MonoBehaviour
 {
     [SerializeField] private PlayerDeath _death;
+    [SerializeField] private PlayerMovement _movement;
 
     private Dictionary<string, Action<Collider2D>> triggerAction = new Dictionary<string, Action<Collider2D>>();
     private Dictionary<string, Action<Collision2D>> collisionAction = new Dictionary<string, Action<Collision2D>>();
@@ -20,8 +21,10 @@ public class PlayerTrigger : MonoBehaviour
         triggerAction["Energy"] = EnergyGet;
         triggerAction["Enemy"] = EnemyKill;
         triggerAction["Trap"] = TrapKill;
+        triggerAction["DashEnergy"] = RestoreDash;
         stats = GetComponent<PlayerStats>();
         collisionAction["Enemy"] = EnemyDeath;
+        collisionAction["Trap"] = TrapKill;
 
         _playerSound = GetComponent<PlayerSound>();
     }
@@ -62,5 +65,15 @@ public class PlayerTrigger : MonoBehaviour
     private void TrapKill(Collider2D other)
     {
         _death.Death();
+    }
+
+    private void TrapKill(Collision2D other)
+    {
+        _death.Death();
+    }
+
+    private void RestoreDash(Collider2D other)
+    {
+        _movement.RestoreDash();
     }
 }

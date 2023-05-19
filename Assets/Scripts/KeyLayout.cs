@@ -10,7 +10,7 @@ public static class KeyLayout
         { "Рывок", KeyCode.X },
         { "Стрельба", KeyCode.Z },
         { "Пауза", KeyCode.Escape },
-        { "Взаимодействовать", KeyCode.V }
+        { "Взаимодействовать", KeyCode.E }
     };
 
     public static KeyCode Jump { get => keysLayout["Прыжок"]; set => keysLayout["Прыжок"] = value; }

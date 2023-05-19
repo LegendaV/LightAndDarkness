@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerStats _playerStats;
 
+    private float _gravityScaleBeforeDash;
+
     private Animator _animator;
 
     private void Start()
@@ -115,12 +117,13 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator ProcessDash()
     {
+        _gravityScaleBeforeDash = _rb.gravityScale;
         _rb.gravityScale = 0;
         _isDashed = true;
         yield return new WaitForSeconds(0.2f);
         _isDashed = false;
         _dashDirection = Vector2.zero;
-        _rb.gravityScale = 1;
+        _rb.gravityScale = _gravityScaleBeforeDash;
     }
 
     private void Jump()
@@ -139,5 +142,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<CapsuleCollider2D>());
         }
+    }
+
+    public void RestoreDash()
+    {
+        _canUseDash = true;
     }
 }
