@@ -13,15 +13,7 @@ public class Crystal : MonoBehaviour
 
     [SerializeField] private ParticleSystem _particleSystem;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !_playingSounds)
-        {
-            StartCoroutine(PlayCrystalSound());
-        }
-    }
-
-    private IEnumerator PlayCrystalSound()
+    public IEnumerator PlayCrystalSound()
     {
         _playingSounds = true;
 
