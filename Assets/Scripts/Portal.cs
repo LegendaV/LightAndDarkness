@@ -8,6 +8,8 @@ public class Portal : MonoBehaviour
     private Transform _position;
     [SerializeField]
     private PlayerStats _playerStats;
+    [SerializeField]
+    private int _teleportationCost = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +17,7 @@ public class Portal : MonoBehaviour
         {
             if (_playerStats.Energy > 0)
             {
-                _playerStats.Energy--;
+                _playerStats.Energy = Mathf.Max(0, _playerStats.Energy - _teleportationCost);
             }
             collision.gameObject.transform.position = _position.position;
         }

@@ -75,5 +75,6 @@ public class PlayerTrigger : MonoBehaviour
     private void RestoreDash(Collider2D other)
     {
         _movement.RestoreDash();
+        _playerSound.PlayLootingSound();
     }
 }

@@ -978,6 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _death: {fileID: 5697223183011229974}
+  _movement: {fileID: 5697223183011229971}
 --- !u!114 &5697223182194454416
 MonoBehaviour:
   m_ObjectHideFlags: 0
