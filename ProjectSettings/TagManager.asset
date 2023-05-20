@@ -14,6 +14,7 @@ TagManager:
   - Spawner
   - EnemySpawner
   - EnergySpawner
+  - DashEnergy
   layers:
   - Default
   - TransparentFX
