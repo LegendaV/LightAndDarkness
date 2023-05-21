@@ -229,7 +229,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5697223182676391231}
   m_Bounds:
-    m_Center: {x: -0.017997742, y: 0.0040860176, z: 0}
+    m_Center: {x: -0.017997742, y: 0.0040858984, z: 0}
     m_Extent: {x: 0.06999999, y: 0.135, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5697223183349062786}
   m_Bounds:
-    m_Center: {x: 0.053990364, y: -0.000006198883, z: 0}
+    m_Center: {x: 0.053990364, y: -0.0000063180923, z: 0}
     m_Extent: {x: 0.069999985, y: 0.135, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -997,9 +997,11 @@ MonoBehaviour:
   _dashForce: 12
   _checkpoint: {x: 0, y: 0}
   _lightPower: 3
+  _light: {fileID: 5697223182754799311}
   _inDialogue: 0
   _hasDash: 0
   _skyeyFireflyProgress: 0
+  _sunCrystalProgress: 0
   _nearCrystal: 0
 --- !u!114 &5697223183011229972
 MonoBehaviour:

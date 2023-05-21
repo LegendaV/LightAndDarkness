@@ -9,6 +9,8 @@ public class PlayerDialogue : MonoBehaviour
 
     private string[] _dialogueLines;
 
+    public bool StartDialog { get; set; }
+
     public void SetDialogueLines(string[] lines)
     {
         _dialogueLines = lines.ToArray();
@@ -23,8 +25,9 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (_dialogueLines is not null)
         {
-            if (Input.GetKeyDown(KeyLayout.Dialog))
+            if (Input.GetKeyDown(KeyLayout.Dialog) || StartDialog)
             {
+                StartDialog = false;
                 _dialogueSystem.SetDialogueLines(_dialogueLines);
             }
         }
