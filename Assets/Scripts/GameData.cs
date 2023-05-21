@@ -24,13 +24,26 @@ public class GameData
     //Environment Data
     public HashSet<(float, float, float)> Environment;
 
+    //Dialogs Data
+    public HashSet<(float, float, float)> Dialogs;
+
+
     public GameData(string sceneName)
     {
         var allObjects = GetAllObjects(sceneName);
         Environment = new HashSet<(float, float, float)>();
+        Dialogs = new HashSet<(float, float, float)>();
 
         foreach (var gameObject in allObjects)
         {
+            if (gameObject.TryGetComponent<DialogueItem>(out var dialog))
+            {
+                if (dialog.IsForced)
+                {
+                    var pos = gameObject.transform.position;
+                    Dialogs.Add((pos.x, pos.y, pos.z));
+                }
+            }
             if (gameObject.CompareTag("Spawner"))
             {
                 if (!gameObject.GetComponent<SpawnerScript>().IsDestroyed)

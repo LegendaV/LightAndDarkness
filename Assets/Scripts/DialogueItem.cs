@@ -6,9 +6,12 @@ public class DialogueItem : MonoBehaviour
 {
     [SerializeField] private string[] _dialogueLines;
     [SerializeField] private GameObject _buttonPrefab;
+    [SerializeField] private bool _isForced = false;
 
     private bool _triggered;
     private GameObject _button;
+
+    public bool IsForced { get => _isForced; set => _isForced = value; }
 
     private void Start()
     {
@@ -24,6 +27,11 @@ public class DialogueItem : MonoBehaviour
             _button.SetActive(true);            
             var dialogue = collision.gameObject.GetComponent<PlayerDialogue>();
             dialogue.SetDialogueLines(_dialogueLines);
+            if (_isForced)
+            {
+                _isForced = false;
+                dialogue.StartDialog = true;
+            }
         }
     }
 

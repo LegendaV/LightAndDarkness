@@ -30,6 +30,14 @@ public class LoadSystem : MonoBehaviour
             var frames = new List<GameObject>();
             foreach (var gameObject in all)
             {
+                if (gameObject.TryGetComponent<DialogueItem>(out var dialog))
+                {
+                    var pos = gameObject.transform.position;
+                    if (dialog.IsForced && !loadData.Dialogs.Contains((pos.x, pos.y, pos.z)))
+                    {
+                        dialog.IsForced = false;
+                    }
+                }
                 if (gameObject.CompareTag("Spawner"))
                 {
                     var pos = gameObject.transform.position;
