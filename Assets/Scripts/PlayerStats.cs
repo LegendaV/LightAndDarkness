@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -10,9 +10,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float _dashForce;
     [SerializeField] private Vector2 _checkpoint;
     [SerializeField] private float _lightPower;
+    [SerializeField] private Light2D _light;
     [SerializeField] private bool _inDialogue;
     [SerializeField] private bool _hasDash;
     [SerializeField] private int _skyeyFireflyProgress;
+    [SerializeField] private int _sunCrystalProgress;
     [SerializeField] private bool _nearCrystal;
 
     public int Energy
@@ -71,6 +73,21 @@ public class PlayerStats : MonoBehaviour
         set => _skyeyFireflyProgress = value;
     }
 
+    public int SunCrystalProgress
+    {
+        get => _sunCrystalProgress;
+        set
+        {
+            _sunCrystalProgress = value;
+            if (value == 1)
+            {
+                _light.color = new Color(0.981f, 0.926f, 0.504f);
+                return;
+            }
+            _light.color = Color.white;
+        }
+    }
+
     public void LoadPlayer(GameData save)
     {
         transform.position = new Vector3(save.PlayerPosition[0], save.PlayerPosition[1], save.PlayerPosition[2]);
@@ -82,6 +99,7 @@ public class PlayerStats : MonoBehaviour
         _lightPower = save.LightPower;
         _hasDash = save.HasDash;
         _skyeyFireflyProgress = save.SkyeyFireflyProgress;
+        SunCrystalProgress = save.SunCrystalProgress;
     }
 
     public bool NearCrystal

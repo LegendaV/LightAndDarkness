@@ -19,6 +19,7 @@ public class GameData
     public float LightPower;
     public bool HasDash;
     public int SkyeyFireflyProgress;
+    public int SunCrystalProgress;
 
     //Environment Data
     public HashSet<(float, float, float)> Environment;
@@ -61,6 +62,7 @@ public class GameData
             LightPower = playerStats.LightPower;
             HasDash = playerStats.HasDash;
             SkyeyFireflyProgress = playerStats.SkyeyFireflyProgress;
+            SunCrystalProgress = playerStats.SunCrystalProgress;
         }
     }
 
