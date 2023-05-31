@@ -9,12 +9,18 @@ public class DashRestorer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _playerIn = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _playerIn = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _playerIn = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _playerIn = false;
+        }
     }
 
     void Update()
