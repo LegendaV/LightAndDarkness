@@ -634,6 +634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMenu: {fileID: 102900000, guid: 1e38e87d99ebdcc4f8e46c32f728a6e8, type: 3}
+  _menuAudio: {fileID: 0}
+  _clickSounds: []
 --- !u!1 &1722476152721596608
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,11 +882,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b59bf14c609734eb130cc5b5d1983e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _typingAudio: {fileID: 0}
+  _typingSounds: []
   _text: {fileID: 1722476151977665914}
   _textSpeed: 0.09
   _dialogueLines:
   - Aboba
   - Aboba aboba aboba
+  _playerStats: {fileID: 0}
 --- !u!1 &1722476153209094125
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +945,7 @@ MonoBehaviour:
   _image: {fileID: 1722476153484864976}
   _text: {fileID: 1722476152721596638}
   _playerStats: {fileID: 0}
-  _maxValue: 5
+  _maxValue: 35
 --- !u!1 &1722476153381646426
 GameObject:
   m_ObjectHideFlags: 0

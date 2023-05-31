@@ -11,6 +11,10 @@ public class AltarBlessing : MonoBehaviour
 
     private void Start()
     {
+        foreach (var obj in _activeAfterDash)
+        {
+            obj.SetActive(false);
+        }
         if (_playerStats.SkyeyFireflyProgress == 2)
         {
             foreach (var obj in _activeAfterDash)
