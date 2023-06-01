@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class FlyEnemy : MonoBehaviour
 {
-    [SerializeField] private float _distance = 20f;
     private Vector2 _startPosition;
+    
+    [SerializeField] private float _attackTime;
+
+    private bool _isAttacking;
 
     private void Start()
     {
@@ -15,20 +18,23 @@ public class FlyEnemy : MonoBehaviour
 
     private void Update()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, _distance);
-        if (hit.collider is not null && hit.collider.CompareTag("Player"))
-        {
-            transform.position = Vector2.Lerp(
-                transform.position, 
-                hit.collider.transform.position, 
-                Time.deltaTime);
-        }
-        else
-        {
-            transform.position = Vector2.Lerp(
-                transform.position, 
-                _startPosition, 
-                Time.deltaTime);
-        }
+        var position = transform.position;
+        transform.position = _isAttacking
+            ? Vector2.Lerp(position, position + Vector3.down * _attackTime, 5 * Time.deltaTime)
+            : Vector2.Lerp(transform.position, _startPosition, 8 * Time.deltaTime);
+    }
+
+    public void Attack()
+    {
+        StartCoroutine(Attacking());
+    }
+
+    private IEnumerator Attacking()
+    {
+        _isAttacking = true;
+
+        yield return new WaitForSeconds(_attackTime);
+        
+        _isAttacking = false;
     }
 }
