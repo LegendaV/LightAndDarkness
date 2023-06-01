@@ -633,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e583547c57a599647aa8b8cfecadefdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenu: {fileID: 102900000, guid: 1e38e87d99ebdcc4f8e46c32f728a6e8, type: 3}
+  _mainMenu: Menu
   _menuAudio: {fileID: 0}
   _clickSounds: []
 --- !u!1 &1722476152721596608

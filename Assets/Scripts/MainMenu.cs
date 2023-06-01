@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using Random = System.Random;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private SceneAsset _startGameScene;
+    private string _startGameScene;
     [SerializeField]
     private GameObject _setMenu;
 

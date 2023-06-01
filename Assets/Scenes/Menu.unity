@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce28ff2fa22ed64d9e885f86195aa84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startGameScene: {fileID: 102900000, guid: d6e082daf6bff6a43817a7cbc5a531f0, type: 3}
+  _startGameScene: Game
   _setMenu: {fileID: 863642779}
   _menuAudio: {fileID: 1626787254}
   _clickSounds:

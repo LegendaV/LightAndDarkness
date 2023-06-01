@@ -1,31 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadSystem : MonoBehaviour
 {
-    public static void LoadScene(SceneAsset scene)
+    public static void LoadScene(string scene)
     {
-        var asyncOp = LoadScene(scene.name);
+        var asyncOp = Load(scene);
         asyncOp.allowSceneActivation = true;
         asyncOp.completed += operation =>
         {
-            var nextScene = SceneManager.GetSceneByName(scene.name);
+            var nextScene = SceneManager.GetSceneByName(scene);
             var frames = FindObjectsOfType<GameObject>().Where(g => g.CompareTag("Frame")).ToList();
             frames.ForEach(f => f.SetActive(false));
         };
     }
 
-    public static void LoadSceneFromSave(SceneAsset scene, GameData loadData)
+    public static void LoadSceneFromSave(string scene, GameData loadData)
     {
-        var asyncOp = LoadScene(scene.name);
+        var asyncOp = Load(scene);
         asyncOp.allowSceneActivation = true;
         asyncOp.completed += operation =>
         {
-            var nextScene = SceneManager.GetSceneByName(scene.name);
+            var nextScene = SceneManager.GetSceneByName(scene);
             var all = FindObjectsOfType<GameObject>();
             var frames = new List<GameObject>();
             foreach (var gameObject in all)
@@ -60,7 +59,7 @@ public class LoadSystem : MonoBehaviour
         };
     }
 
-    private static AsyncOperation LoadScene(string sceneName)
+    private static AsyncOperation Load(string sceneName)
     {
         var asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         asyncOp.allowSceneActivation = false;

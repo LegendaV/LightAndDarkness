@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
@@ -9,7 +7,7 @@ using Random = System.Random;
 public class EscMenu : MonoBehaviour
 {
     [SerializeField]
-    private SceneAsset _mainMenu;
+    private string _mainMenu;
     private float timeScaleSave;
 
     [SerializeField] private AudioSource _menuAudio;
@@ -20,9 +18,8 @@ public class EscMenu : MonoBehaviour
     {
         PlayClickSound();
         Time.timeScale = timeScaleSave;
-        var scenePath = EditorSceneManager.GetActiveScene().path;
-        var currentScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
-        LoadSystem.LoadSceneFromSave(currentScene, SaveSystem.LoadGame());
+        var scenePath = SceneManager.GetActiveScene().path;
+        LoadSystem.LoadSceneFromSave(scenePath, SaveSystem.LoadGame());
     }
 
     public void ChangeStatus()
